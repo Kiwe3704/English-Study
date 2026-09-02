@@ -162,6 +162,7 @@ let readQueue = [];
 let readIndex = 0;
 let readSession = 0;
 let isReading = false;
+let isPaused = false;
 let ttsButtons = null; // { playBtn, pauseBtn, stopBtn }
 
 function buildReadQueue(article) {
@@ -188,6 +189,7 @@ function playFrom(index) {
   }
   const mySession = ++readSession;
   isReading = true;
+  isPaused = false;
   window.speechSynthesis.cancel();
 
   const step = i => {
@@ -217,8 +219,24 @@ function playFrom(index) {
 
 function stopReading() {
   isReading = false;
+  isPaused = false;
   readSession++;
   window.speechSynthesis.cancel();
+}
+
+// 瀏覽器原生的 speechSynthesis.pause()/resume() 在部分 Chrome 版本上並不可靠
+// (暫停後 resume 常常沒有反應),因此改用自己的佇列位置手動實作暫停/繼續:
+// 暫停時只是停止發聲並記住目前唸到第幾句,繼續時直接從那一句重新播放。
+function pauseReading() {
+  if (!isReading || isPaused) return;
+  isPaused = true;
+  readSession++; // 讓目前這句的 onend/onerror 失效,避免自動推進到下一句
+  window.speechSynthesis.cancel();
+}
+
+function resumeReading() {
+  if (!isReading || !isPaused) return;
+  playFrom(readIndex);
 }
 
 // 插播一個單字的發音;若朗讀正在進行,唸完單字後自動從中斷的那一句繼續。
@@ -228,6 +246,7 @@ function interruptForWord(wordText) {
     return;
   }
   const resumeIndex = readIndex;
+  const wasPaused = isPaused;
   readSession++; // 讓目前佇列裡待處理的 onend/onerror 失效,避免重複推進
   window.speechSynthesis.cancel();
 
@@ -238,7 +257,8 @@ function interruptForWord(wordText) {
   const finish = () => {
     if (done) return;
     done = true;
-    if (isReading) playFrom(resumeIndex);
+    // 如果原本就是暫停狀態,唸完單字後維持暫停,不自動接續朗讀
+    if (isReading && !wasPaused) playFrom(resumeIndex);
   };
   utter.onend = finish;
   utter.onerror = finish;
@@ -283,6 +303,7 @@ function renderArticleView(app, articleId) {
   currentSpeechRate = 1;
   readSession++; // 讓上一篇文章殘留的朗讀佇列失效
   isReading = false;
+  isPaused = false;
   readQueue = buildReadQueue(article);
   readIndex = 0;
   ttsButtons = null;
@@ -330,10 +351,12 @@ function renderArticleView(app, articleId) {
     playBtn.disabled = true; pauseBtn.disabled = false; stopBtn.disabled = false;
   });
   pauseBtn.addEventListener("click", () => {
-    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
-      window.speechSynthesis.pause(); pauseBtn.textContent = "▶ 繼續";
-    } else if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume(); pauseBtn.textContent = "⏸ 暫停";
+    if (!isPaused) {
+      pauseReading();
+      pauseBtn.textContent = "▶ 繼續";
+    } else {
+      resumeReading();
+      pauseBtn.textContent = "⏸ 暫停";
     }
   });
   stopBtn.addEventListener("click", () => {
@@ -521,6 +544,7 @@ function renderRecordsView(app) {
 function router() {
   stopSpeaking();
   isReading = false;
+  isPaused = false;
   readSession++;
   const hash = window.location.hash || "#/";
   const parts = hash.replace(/^#\//, "").split("/").filter(Boolean);
