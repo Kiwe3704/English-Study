@@ -156,12 +156,101 @@ function renderHome(app) {
 // ---------- 文章閱讀頁 ----------
 let currentSpeechRate = 1;
 
+// 整篇朗讀採「逐句佇列」播放,點選單字時只暫停目前這一句、插播單字發音,
+// 結束後自動從剛才那一句繼續往下唸,達成連續聽讀不中斷的體驗。
+let readQueue = [];
+let readIndex = 0;
+let readSession = 0;
+let isReading = false;
+let ttsButtons = null; // { playBtn, pauseBtn, stopBtn }
+
+function buildReadQueue(article) {
+  const sentences = [];
+  article.body.forEach(paragraph => {
+    const matches = paragraph.match(/[^.!?]+[.!?]*/g) || [paragraph];
+    matches.forEach(s => { const t = s.trim(); if (t) sentences.push(t); });
+  });
+  return sentences;
+}
+
+function finishReadingUI() {
+  if (!ttsButtons) return;
+  ttsButtons.playBtn.disabled = false;
+  ttsButtons.pauseBtn.disabled = true;
+  ttsButtons.stopBtn.disabled = true;
+  ttsButtons.pauseBtn.textContent = "⏸ 暫停";
+}
+
+function playFrom(index) {
+  if (!("speechSynthesis" in window)) {
+    alert("你的瀏覽器不支援語音朗讀功能,建議使用 Chrome 或 Edge 瀏覽器。");
+    return;
+  }
+  const mySession = ++readSession;
+  isReading = true;
+  window.speechSynthesis.cancel();
+
+  const step = i => {
+    if (mySession !== readSession) return;
+    if (i >= readQueue.length) {
+      isReading = false;
+      finishReadingUI();
+      return;
+    }
+    readIndex = i;
+    const utter = new SpeechSynthesisUtterance(readQueue[i]);
+    utter.lang = "en-US";
+    utter.rate = currentSpeechRate;
+    let done = false;
+    const advance = () => {
+      if (done) return;
+      done = true;
+      if (mySession !== readSession) return;
+      step(i + 1);
+    };
+    utter.onend = advance;
+    utter.onerror = advance;
+    window.speechSynthesis.speak(utter);
+  };
+  step(index);
+}
+
+function stopReading() {
+  isReading = false;
+  readSession++;
+  window.speechSynthesis.cancel();
+}
+
+// 插播一個單字的發音;若朗讀正在進行,唸完單字後自動從中斷的那一句繼續。
+function interruptForWord(wordText) {
+  if (!("speechSynthesis" in window)) {
+    alert("你的瀏覽器不支援語音朗讀功能,建議使用 Chrome 或 Edge 瀏覽器。");
+    return;
+  }
+  const resumeIndex = readIndex;
+  readSession++; // 讓目前佇列裡待處理的 onend/onerror 失效,避免重複推進
+  window.speechSynthesis.cancel();
+
+  const utter = new SpeechSynthesisUtterance(wordText);
+  utter.lang = "en-US";
+  utter.rate = currentSpeechRate;
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    if (isReading) playFrom(resumeIndex);
+  };
+  utter.onend = finish;
+  utter.onerror = finish;
+  window.speechSynthesis.speak(utter);
+}
+
 function selectVocabWord(article, wordKey, el) {
   document.querySelectorAll(".vocab-word.active").forEach(s => s.classList.remove("active"));
   if (el) el.classList.add("active");
   const entry = article.vocabulary.find(v => v.word.toLowerCase() === wordKey);
   if (!entry) return;
-  speakText(entry.word, currentSpeechRate);
+  interruptForWord(entry.word);
 
   const panel = document.getElementById("vocab-panel");
   if (!panel) return;
@@ -176,7 +265,7 @@ function selectVocabWord(article, wordKey, el) {
       <button class="btn-add" id="vp-add" ${already ? "disabled" : ""}>${already ? "✓ 已加入單字本" : "➕ 加入我的單字本"}</button>
     </div>
   `;
-  document.getElementById("vp-speak").addEventListener("click", () => speakText(entry.word, currentSpeechRate));
+  document.getElementById("vp-speak").addEventListener("click", () => interruptForWord(entry.word));
   const addBtn = document.getElementById("vp-add");
   addBtn.addEventListener("click", () => {
     addVocabWord({
@@ -192,6 +281,11 @@ function renderArticleView(app, articleId) {
   const article = ARTICLES.find(a => a.id === articleId);
   if (!article) { app.innerHTML = '<p class="empty-state">找不到這篇文章。</p>'; return; }
   currentSpeechRate = 1;
+  readSession++; // 讓上一篇文章殘留的朗讀佇列失效
+  isReading = false;
+  readQueue = buildReadQueue(article);
+  readIndex = 0;
+  ttsButtons = null;
 
   const t = TOPIC_META[article.topic];
   const l = LEVEL_META[article.level];
@@ -227,14 +321,12 @@ function renderArticleView(app, articleId) {
   const pauseBtn = document.getElementById("pause-btn");
   const stopBtn = document.getElementById("stop-btn");
   const rateRange = document.getElementById("rate-range");
+  ttsButtons = { playBtn, pauseBtn, stopBtn };
 
   rateRange.addEventListener("input", () => { currentSpeechRate = parseFloat(rateRange.value); });
 
   playBtn.addEventListener("click", () => {
-    const fullText = article.body.join(" ");
-    speakText(fullText, currentSpeechRate, () => {
-      playBtn.disabled = false; pauseBtn.disabled = true; stopBtn.disabled = true; pauseBtn.textContent = "⏸ 暫停";
-    });
+    playFrom(0);
     playBtn.disabled = true; pauseBtn.disabled = false; stopBtn.disabled = false;
   });
   pauseBtn.addEventListener("click", () => {
@@ -245,7 +337,7 @@ function renderArticleView(app, articleId) {
     }
   });
   stopBtn.addEventListener("click", () => {
-    stopSpeaking(); playBtn.disabled = false; pauseBtn.disabled = true; stopBtn.disabled = true; pauseBtn.textContent = "⏸ 暫停";
+    stopReading(); finishReadingUI();
   });
 
   const bodyEl = document.getElementById("article-body");
@@ -253,7 +345,7 @@ function renderArticleView(app, articleId) {
     const speakBtn = e.target.closest(".tip-speak");
     if (speakBtn) {
       e.stopPropagation();
-      speakText(speakBtn.dataset.speakWord, currentSpeechRate);
+      interruptForWord(speakBtn.dataset.speakWord);
       return;
     }
     const vocabEl = e.target.closest(".vocab-word");
@@ -428,6 +520,8 @@ function renderRecordsView(app) {
 // ---------- 路由 ----------
 function router() {
   stopSpeaking();
+  isReading = false;
+  readSession++;
   const hash = window.location.hash || "#/";
   const parts = hash.replace(/^#\//, "").split("/").filter(Boolean);
   const app = document.getElementById("app");
