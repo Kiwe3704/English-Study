@@ -9,7 +9,7 @@ const LEVEL_META = {
   elementary: { label: "國小中高年級" },
   middle: { label: "國中" }
 };
-const LS_KEYS = { VOCAB: "myVocabList", RECORDS: "learningRecords" };
+const LS_KEYS = { VOCAB: "myVocabList", RECORDS: "learningRecords", VIEWED: "viewedArticles" };
 const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
 
 // ---------- localStorage 工具 ----------
@@ -27,6 +27,22 @@ function addVocabWord(entry) {
 }
 function removeVocabWord(word, articleId) {
   saveVocabList(getVocabList().filter(x => !(x.word === word && x.articleId === articleId)));
+}
+
+// 有 addedDate 的文章是新增文章:在這個瀏覽器還沒打開過之前顯示 NEW 標籤
+function getViewedArticles() {
+  try { return JSON.parse(localStorage.getItem(LS_KEYS.VIEWED)) || []; }
+  catch (e) { return []; }
+}
+function markArticleViewed(articleId) {
+  const viewed = getViewedArticles();
+  if (!viewed.includes(articleId)) {
+    viewed.push(articleId);
+    localStorage.setItem(LS_KEYS.VIEWED, JSON.stringify(viewed));
+  }
+}
+function isNewArticle(article) {
+  return Boolean(article.addedDate) && !getViewedArticles().includes(article.id);
 }
 
 function getRecords() {
@@ -110,7 +126,7 @@ function cardHtml(a) {
   const t = TOPIC_META[a.topic];
   const l = LEVEL_META[a.level];
   return `<div class="article-card">
-    <div class="card-top">${t.icon}</div>
+    <div class="card-top">${t.icon}${isNewArticle(a) ? '<span class="badge-new">NEW</span>' : ""}</div>
     <div class="badge-row"><span class="badge">${l.label}</span><span class="badge">${t.label}</span><span class="badge">⏱ ${a.estMinutes} 分鐘</span></div>
     <h3>${a.title}</h3>
     <button class="card-cta" data-id="${a.id}">開始閱讀 →</button>
@@ -125,7 +141,7 @@ function renderHome(app) {
   const filtered = ARTICLES.filter(
     a => (homeLevelFilter === "all" || a.level === homeLevelFilter) &&
          (homeTopicFilter === "all" || a.topic === homeTopicFilter)
-  );
+  ).sort((a, b) => isNewArticle(b) - isNewArticle(a)); // 還沒看過的新文章排在最前面
 
   app.innerHTML = `
     <div class="intro-box">
@@ -300,6 +316,7 @@ function selectVocabWord(article, wordKey, el) {
 function renderArticleView(app, articleId) {
   const article = ARTICLES.find(a => a.id === articleId);
   if (!article) { app.innerHTML = '<p class="empty-state">找不到這篇文章。</p>'; return; }
+  markArticleViewed(article.id);
   currentSpeechRate = 1;
   readSession++; // 讓上一篇文章殘留的朗讀佇列失效
   isReading = false;

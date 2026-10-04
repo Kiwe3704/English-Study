@@ -478,5 +478,199 @@ const ARTICLES = [
       { type: "listening", listenText: "The coach worked with the athlete to improve his technique.", question: "What did the coach help the athlete improve?", options: ["His technique", "His homework", "His singing", "His cooking"], answerIndex: 0 },
       { type: "listening", listenText: "Winning this medal was a huge milestone in her career.", question: "What was winning this medal for her?", options: ["A huge milestone in her career", "A small mistake", "A waste of time", "A boring event"], answerIndex: 0 }
     ]
+  },
+  {
+    id: "music-elem-2",
+    title: "Making Music with Everyday Objects",
+    level: "elementary",
+    topic: "music",
+    estMinutes: 3,
+    addedDate: "2026-10-04",
+    body: [
+      "You do not need an expensive instrument to make music. Look around your home! A plastic bottle, a wooden spoon, and an empty box can all make interesting sounds.",
+      "If you fill glass bottles with different amounts of water and tap them gently, each bottle makes a different note. Less water gives a higher sound, and more water gives a lower sound.",
+      "Some bands around the world only play instruments made from recycled materials. They use old pots as drums and pipes as flutes. Their concerts show that music can be creative and good for the planet too.",
+      "Try it with your friends. Find some objects, create a simple beat together, and see what kind of music your team can invent!"
+    ],
+    vocabulary: [
+      { word: "instrument", pos: "n.", zh: "樂器", example: "She plays a musical instrument.", exampleZh: "她會演奏一種樂器。" },
+      { word: "expensive", pos: "adj.", zh: "昂貴的", example: "This guitar is very expensive.", exampleZh: "這把吉他非常昂貴。" },
+      { word: "bottle", pos: "n.", zh: "瓶子", example: "Please put the water bottle on the table.", exampleZh: "請把水瓶放在桌上。" },
+      { word: "empty", pos: "adj.", zh: "空的", example: "The box is empty.", exampleZh: "這個盒子是空的。" },
+      { word: "gently", pos: "adv.", zh: "輕輕地", example: "Tap the glass gently.", exampleZh: "輕輕地敲杯子。" },
+      { word: "note", pos: "n.", zh: "音符;音", example: "She sang a high note.", exampleZh: "她唱了一個高音。" },
+      { word: "recycle", pos: "v.", zh: "回收;再利用", example: "We recycle paper and plastic.", exampleZh: "我們回收紙類和塑膠。" },
+      { word: "drum", pos: "n.", zh: "鼓", example: "He plays the drums in a band.", exampleZh: "他在樂團裡打鼓。" },
+      { word: "creative", pos: "adj.", zh: "有創意的", example: "Her idea is very creative.", exampleZh: "她的點子很有創意。" },
+      { word: "beat", pos: "n.", zh: "節拍", example: "Clap your hands to the beat.", exampleZh: "跟著節拍拍手。" }
+    ],
+    extraVocabulary: [
+      { word: "wooden", pos: "adj.", zh: "木製的", example: "I have a wooden spoon.", exampleZh: "我有一支木湯匙。" },
+      { word: "interesting", pos: "adj.", zh: "有趣的", example: "This is an interesting sound.", exampleZh: "這是一個有趣的聲音。" },
+      { word: "tap", pos: "v.", zh: "輕敲", example: "Tap the table with your finger.", exampleZh: "用手指輕敲桌子。" },
+      { word: "amount", pos: "n.", zh: "數量;量", example: "Use a small amount of water.", exampleZh: "用少量的水。" },
+      { word: "pot", pos: "n.", zh: "鍋子", example: "My mom cooks soup in a big pot.", exampleZh: "我媽媽用大鍋煮湯。" },
+      { word: "planet", pos: "n.", zh: "星球;地球", example: "We should take care of our planet.", exampleZh: "我們應該愛護地球。" }
+    ],
+    quiz: [
+      { type: "reading", question: "According to the article, what do you need to make music?", options: ["An expensive instrument", "A big stage", "Everyday objects can work", "A music teacher"], answerIndex: 2 },
+      { type: "reading", question: "What happens when a glass bottle has less water?", options: ["It makes a higher sound", "It makes a lower sound", "It makes no sound", "It breaks"], answerIndex: 0 },
+      { type: "reading", question: "What do some bands use as drums?", options: ["Paper cups", "Old pots", "Bananas", "Books"], answerIndex: 1 },
+      { type: "reading", question: "What does the article ask you to do with your friends?", options: ["Buy new instruments", "Create a simple beat together", "Watch a concert online", "Clean the kitchen"], answerIndex: 1 },
+      { type: "vocab", question: "\"Instrument\" means:", options: ["樂器", "瓶子", "鼓", "節拍"], answerIndex: 0 },
+      { type: "vocab", question: "Choose the meaning of \"creative\".", options: ["昂貴的", "有創意的", "空的", "輕輕地"], answerIndex: 1 },
+      { type: "vocab", question: "\"Recycle\" means:", options: ["音符", "輕輕地", "回收;再利用", "昂貴的"], answerIndex: 2 },
+      { type: "vocab", question: "Which word means 空的?", options: ["gently", "bottle", "note", "empty"], answerIndex: 3 },
+      { type: "listening", listenText: "Tom made a drum from an old cooking pot.", question: "What did Tom use to make a drum?", options: ["A plastic bag", "An old cooking pot", "A wooden chair", "A glass bottle"], answerIndex: 1 },
+      { type: "listening", listenText: "This bottle has more water, so it makes a lower sound.", question: "Why does the bottle make a lower sound?", options: ["It is empty", "It is broken", "It has more water", "It is very small"], answerIndex: 2 },
+      { type: "listening", listenText: "Our class made instruments from recycled boxes and bottles.", question: "What did the class make instruments from?", options: ["New metal pipes", "Recycled boxes and bottles", "Expensive wood", "Paper money"], answerIndex: 1 },
+      { type: "listening", listenText: "Please tap the glass gently, or it might break.", question: "How should you tap the glass?", options: ["Very hard", "With a hammer", "Quickly and loudly", "Gently"], answerIndex: 3 }
+    ]
+  },
+  {
+    id: "nature-middle-2",
+    title: "Why Bees Matter",
+    level: "middle",
+    topic: "nature",
+    estMinutes: 4,
+    addedDate: "2026-10-04",
+    body: [
+      "Bees may be small, but they play a huge role in our food system. When a bee visits a flower to collect nectar, tiny grains of pollen stick to its body. As it flies to the next flower, it carries that pollen along and helps the plant produce fruit and seeds.",
+      "This process is called pollination, and scientists estimate that about one third of the food we eat depends on it. Apples, almonds, and strawberries are just a few crops that need pollinators such as bees.",
+      "In recent years, many bee populations have declined. Pesticides, the loss of wild flowers, and diseases are all serious threats. Without enough bees, farmers would struggle to grow many of the foods we enjoy.",
+      "Fortunately, people can help. Planting flowers in gardens and on balconies gives bees more food, and avoiding harmful chemicals keeps them healthy. Even a small window box can become an important stop for a hungry bee."
+    ],
+    vocabulary: [
+      { word: "pollen", pos: "n.", zh: "花粉", example: "Bees carry pollen from flower to flower.", exampleZh: "蜜蜂把花粉從一朵花帶到另一朵花。" },
+      { word: "nectar", pos: "n.", zh: "花蜜", example: "Bees drink nectar from flowers.", exampleZh: "蜜蜂吸食花朵的花蜜。" },
+      { word: "pollination", pos: "n.", zh: "授粉", example: "Pollination helps plants make fruit.", exampleZh: "授粉幫助植物結出果實。" },
+      { word: "estimate", pos: "v.", zh: "估計", example: "Scientists estimate there are millions of bees here.", exampleZh: "科學家估計這裡有數百萬隻蜜蜂。" },
+      { word: "crop", pos: "n.", zh: "農作物", example: "Rice is an important crop in Asia.", exampleZh: "稻米是亞洲重要的農作物。" },
+      { word: "population", pos: "n.", zh: "族群數量;人口", example: "The bee population is getting smaller.", exampleZh: "蜜蜂的族群數量正在減少。" },
+      { word: "decline", pos: "v.", zh: "下降;減少", example: "The number of birds has declined.", exampleZh: "鳥類的數量已經減少了。" },
+      { word: "pesticide", pos: "n.", zh: "殺蟲劑;農藥", example: "Some pesticides can hurt bees.", exampleZh: "有些農藥會傷害蜜蜂。" },
+      { word: "threat", pos: "n.", zh: "威脅", example: "Pollution is a threat to wildlife.", exampleZh: "污染對野生動物是一種威脅。" },
+      { word: "chemical", pos: "n.", zh: "化學物質", example: "Do not use harmful chemicals in the garden.", exampleZh: "不要在花園裡使用有害的化學物質。" }
+    ],
+    extraVocabulary: [
+      { word: "role", pos: "n.", zh: "角色;作用", example: "Teachers play an important role in school.", exampleZh: "老師在學校扮演重要的角色。" },
+      { word: "seed", pos: "n.", zh: "種子", example: "Plant the seeds in the soil.", exampleZh: "把種子種在土裡。" },
+      { word: "produce", pos: "v.", zh: "生產;產生", example: "This tree produces a lot of apples.", exampleZh: "這棵樹結了很多蘋果。" },
+      { word: "struggle", pos: "v.", zh: "辛苦應付;掙扎", example: "Farmers struggle when it does not rain.", exampleZh: "不下雨時農夫們很辛苦。" },
+      { word: "garden", pos: "n.", zh: "花園", example: "We grow flowers in our garden.", exampleZh: "我們在花園裡種花。" },
+      { word: "harmful", pos: "adj.", zh: "有害的", example: "Smoking is harmful to your health.", exampleZh: "吸菸對健康有害。" },
+      { word: "fortunately", pos: "adv.", zh: "幸運地;幸好", example: "Fortunately, the rain stopped.", exampleZh: "幸好雨停了。" }
+    ],
+    quiz: [
+      { type: "reading", question: "What sticks to a bee's body when it visits a flower?", options: ["Pollen", "Water", "Sand", "Honey"], answerIndex: 0 },
+      { type: "reading", question: "About how much of the food we eat depends on pollination, according to the article?", options: ["One half", "One third", "One tenth", "All of it"], answerIndex: 1 },
+      { type: "reading", question: "Which of the following is NOT mentioned as a threat to bees?", options: ["Pesticides", "Loss of wild flowers", "Diseases", "Loud music"], answerIndex: 3 },
+      { type: "reading", question: "How can people help bees, according to the article?", options: ["By planting flowers and avoiding harmful chemicals", "By catching more bees", "By eating less fruit", "By cutting down trees"], answerIndex: 0 },
+      { type: "vocab", question: "\"Pollination\" means:", options: ["授粉", "花蜜", "農藥", "估計"], answerIndex: 0 },
+      { type: "vocab", question: "Choose the meaning of \"decline\".", options: ["增加", "下降;減少", "生產", "保護"], answerIndex: 1 },
+      { type: "vocab", question: "\"Threat\" means:", options: ["農作物", "化學物質", "威脅", "花粉"], answerIndex: 2 },
+      { type: "vocab", question: "Which word means 農作物?", options: ["nectar", "estimate", "crop", "population"], answerIndex: 2 },
+      { type: "listening", listenText: "Bees collect nectar from flowers to make honey.", question: "Why do bees collect nectar?", options: ["To build homes", "To make honey", "To clean flowers", "To feed birds"], answerIndex: 1 },
+      { type: "listening", listenText: "The bee population in this area has declined by half.", question: "What happened to the bee population in this area?", options: ["It doubled", "It stayed the same", "It declined by half", "It moved to the city"], answerIndex: 2 },
+      { type: "listening", listenText: "Farmers in the village stopped using harmful pesticides.", question: "What did the farmers stop using?", options: ["Water", "Harmful pesticides", "Tractors", "Seeds"], answerIndex: 1 },
+      { type: "listening", listenText: "Strawberries and apples are crops that need bees.", question: "Which crops are mentioned?", options: ["Rice and corn", "Potatoes and carrots", "Bananas and grapes", "Strawberries and apples"], answerIndex: 3 }
+    ]
+  },
+  {
+    id: "tech-elem-2",
+    title: "Exploring Mars with Rovers",
+    level: "elementary",
+    topic: "tech",
+    estMinutes: 3,
+    addedDate: "2026-10-04",
+    body: [
+      "Have you ever wondered what Mars looks like up close? People cannot travel there yet, so scientists send special robot cars called rovers instead.",
+      "A rover has wheels, cameras, and tools. It drives slowly across the rocky ground and takes pictures of everything it sees. Some rovers can even drill into rocks to study what they are made of.",
+      "Mars is very far from Earth, so a message from the rover takes several minutes to arrive. Because of this delay, engineers cannot drive the rover like a toy car. Instead, they send a plan, and the rover follows it carefully on its own.",
+      "Rovers also search for signs of water. Water is important because it might tell us if tiny living things ever lived on Mars. Maybe one day, you will help design the next rover!"
+    ],
+    vocabulary: [
+      { word: "rover", pos: "n.", zh: "探測車", example: "The rover is exploring Mars.", exampleZh: "探測車正在探索火星。" },
+      { word: "wheel", pos: "n.", zh: "輪子", example: "A car has four wheels.", exampleZh: "汽車有四個輪子。" },
+      { word: "camera", pos: "n.", zh: "相機;攝影機", example: "The rover uses a camera to take pictures.", exampleZh: "探測車用相機拍照。" },
+      { word: "rocky", pos: "adj.", zh: "多岩石的", example: "The ground on Mars is rocky.", exampleZh: "火星的地面布滿岩石。" },
+      { word: "drill", pos: "v.", zh: "鑽孔", example: "The rover can drill into rocks.", exampleZh: "探測車可以在岩石上鑽孔。" },
+      { word: "message", pos: "n.", zh: "訊息", example: "I sent a message to my friend.", exampleZh: "我傳了一則訊息給朋友。" },
+      { word: "delay", pos: "n.", zh: "延遲", example: "There was a long delay before the answer came.", exampleZh: "回覆前有很長的延遲。" },
+      { word: "search", pos: "v.", zh: "搜尋;尋找", example: "We search for shells on the beach.", exampleZh: "我們在海灘上尋找貝殼。" },
+      { word: "sign", pos: "n.", zh: "跡象;標誌", example: "Dark clouds are a sign of rain.", exampleZh: "烏雲是下雨的跡象。" },
+      { word: "design", pos: "v.", zh: "設計", example: "Engineers design new machines.", exampleZh: "工程師設計新的機器。" }
+    ],
+    extraVocabulary: [
+      { word: "wonder", pos: "v.", zh: "想知道;好奇", example: "I wonder what is inside the box.", exampleZh: "我好奇盒子裡有什麼。" },
+      { word: "travel", pos: "v.", zh: "旅行;前往", example: "We will travel to Japan this summer.", exampleZh: "今年夏天我們要去日本旅行。" },
+      { word: "slowly", pos: "adv.", zh: "慢慢地", example: "The turtle walks slowly.", exampleZh: "烏龜慢慢地走。" },
+      { word: "arrive", pos: "v.", zh: "抵達", example: "The train will arrive at noon.", exampleZh: "火車將在中午抵達。" },
+      { word: "carefully", pos: "adv.", zh: "小心地;仔細地", example: "Please read the question carefully.", exampleZh: "請仔細閱讀題目。" },
+      { word: "tiny", pos: "adj.", zh: "極小的", example: "An ant is a tiny insect.", exampleZh: "螞蟻是極小的昆蟲。" }
+    ],
+    quiz: [
+      { type: "reading", question: "Why do scientists send rovers to Mars?", options: ["Because rovers are cheaper than toys", "Because people cannot travel there yet", "Because Mars is very close", "Because astronauts are busy"], answerIndex: 1 },
+      { type: "reading", question: "What can some rovers do to study rocks?", options: ["Eat them", "Paint them", "Drill into them", "Throw them"], answerIndex: 2 },
+      { type: "reading", question: "Why can't engineers drive the rover like a toy car?", options: ["Because the rover has no wheels", "Because messages take several minutes to arrive", "Because Mars has no ground", "Because the rover is too fast"], answerIndex: 1 },
+      { type: "reading", question: "Why is finding water on Mars important?", options: ["It can be sold on Earth", "It makes the rover faster", "It helps the rover swim", "It might tell us if tiny living things lived there"], answerIndex: 3 },
+      { type: "vocab", question: "\"Delay\" means:", options: ["訊息", "延遲", "輪子", "設計"], answerIndex: 1 },
+      { type: "vocab", question: "Choose the meaning of \"rocky\".", options: ["極小的", "慢慢地", "多岩石的", "小心地"], answerIndex: 2 },
+      { type: "vocab", question: "\"Design\" means:", options: ["搜尋", "鑽孔", "跡象", "設計"], answerIndex: 3 },
+      { type: "vocab", question: "Which word means 探測車?", options: ["camera", "rover", "wheel", "sign"], answerIndex: 1 },
+      { type: "listening", listenText: "The rover took more than one hundred pictures today.", question: "How many pictures did the rover take today?", options: ["Only one", "Ten", "More than one hundred", "None"], answerIndex: 2 },
+      { type: "listening", listenText: "The message from Mars arrived after a delay of ten minutes.", question: "How long was the delay?", options: ["Ten seconds", "Ten minutes", "Ten hours", "Ten days"], answerIndex: 1 },
+      { type: "listening", listenText: "Engineers designed the rover with six strong wheels.", question: "How many wheels does the rover have?", options: ["Four", "Six", "Eight", "Two"], answerIndex: 1 },
+      { type: "listening", listenText: "The rover is searching for signs of water under the ground.", question: "What is the rover searching for?", options: ["Signs of water", "Gold", "Other rovers", "Trees"], answerIndex: 0 }
+    ]
+  },
+  {
+    id: "sports-middle-2",
+    title: "The Rise of Esports",
+    level: "middle",
+    topic: "sports",
+    estMinutes: 4,
+    addedDate: "2026-10-04",
+    body: [
+      "Not every sport takes place on a field or in a pool. Esports, or electronic sports, are organized video game competitions, and they have grown into a global industry. Professional players compete in huge arenas while millions of fans watch online.",
+      "Some people argue that video games are not real sports. However, top esports players need quick reflexes, sharp focus, and excellent strategy. Many teams follow strict training schedules, just like traditional athletes.",
+      "Esports have also been included in major multi-sport events in Asia, which shows how quickly their popularity is growing. Some universities even offer scholarships to talented gamers.",
+      "Still, experts remind young players to keep a healthy balance. Spending too many hours in front of a screen can affect sleep, eyesight, and schoolwork. Like any sport, esports are most enjoyable when combined with rest and exercise."
+    ],
+    vocabulary: [
+      { word: "electronic", pos: "adj.", zh: "電子的", example: "A computer is an electronic device.", exampleZh: "電腦是一種電子裝置。" },
+      { word: "organize", pos: "v.", zh: "組織;籌辦", example: "Our school organized a sports day.", exampleZh: "我們學校籌辦了運動會。" },
+      { word: "competition", pos: "n.", zh: "比賽;競賽", example: "She won first place in the competition.", exampleZh: "她在比賽中得到第一名。" },
+      { word: "industry", pos: "n.", zh: "產業", example: "The game industry is growing fast.", exampleZh: "遊戲產業成長得很快。" },
+      { word: "professional", pos: "adj.", zh: "職業的;專業的", example: "He is a professional soccer player.", exampleZh: "他是一位職業足球員。" },
+      { word: "arena", pos: "n.", zh: "競技場;體育館", example: "The concert was held in a large arena.", exampleZh: "演唱會在大型體育館舉行。" },
+      { word: "reflex", pos: "n.", zh: "反射動作;反應", example: "Good players have fast reflexes.", exampleZh: "優秀的選手反應很快。" },
+      { word: "strategy", pos: "n.", zh: "策略", example: "Our team needs a better strategy.", exampleZh: "我們隊需要更好的策略。" },
+      { word: "scholarship", pos: "n.", zh: "獎學金", example: "She got a scholarship to study abroad.", exampleZh: "她獲得了出國留學的獎學金。" },
+      { word: "balance", pos: "n.", zh: "平衡", example: "It is important to keep a balance between work and rest.", exampleZh: "在工作和休息之間保持平衡很重要。" }
+    ],
+    extraVocabulary: [
+      { word: "argue", pos: "v.", zh: "主張;爭論", example: "Some people argue that homework is too long.", exampleZh: "有些人主張作業太多了。" },
+      { word: "focus", pos: "n.", zh: "專注", example: "This game needs a lot of focus.", exampleZh: "這個遊戲需要高度專注。" },
+      { word: "schedule", pos: "n.", zh: "時間表", example: "Check the schedule before the match.", exampleZh: "比賽前先看時間表。" },
+      { word: "talented", pos: "adj.", zh: "有天分的", example: "She is a talented young player.", exampleZh: "她是一位有天分的年輕選手。" },
+      { word: "screen", pos: "n.", zh: "螢幕", example: "Do not sit too close to the screen.", exampleZh: "不要坐得離螢幕太近。" },
+      { word: "eyesight", pos: "n.", zh: "視力", example: "Reading in the dark can hurt your eyesight.", exampleZh: "在暗處閱讀會傷害視力。" },
+      { word: "combine", pos: "v.", zh: "結合", example: "Combine exercise with good sleep.", exampleZh: "把運動和充足睡眠結合起來。" }
+    ],
+    quiz: [
+      { type: "reading", question: "What are esports, according to the article?", options: ["Sports played only in water", "Organized video game competitions", "A kind of outdoor running race", "Traditional board games"], answerIndex: 1 },
+      { type: "reading", question: "What skills do top esports players need?", options: ["Quick reflexes, sharp focus, and excellent strategy", "Only strong muscles", "Singing and dancing", "Cooking skills"], answerIndex: 0 },
+      { type: "reading", question: "What do some universities offer to talented gamers?", options: ["Free video games", "Scholarships", "New computers only", "Jobs as teachers"], answerIndex: 1 },
+      { type: "reading", question: "What do experts remind young players to do?", options: ["Play games all night", "Keep a healthy balance", "Quit school", "Buy expensive equipment"], answerIndex: 1 },
+      { type: "vocab", question: "\"Strategy\" means:", options: ["獎學金", "策略", "產業", "平衡"], answerIndex: 1 },
+      { type: "vocab", question: "Choose the meaning of \"professional\".", options: ["職業的;專業的", "電子的", "有天分的", "競技場"], answerIndex: 0 },
+      { type: "vocab", question: "\"Scholarship\" means:", options: ["比賽", "競技場", "獎學金", "反射動作"], answerIndex: 2 },
+      { type: "vocab", question: "Which word means 平衡?", options: ["industry", "arena", "reflex", "balance"], answerIndex: 3 },
+      { type: "listening", listenText: "Thousands of fans filled the arena to watch the final match.", question: "Where did the fans watch the final match?", options: ["At home", "In the arena", "At school", "In a park"], answerIndex: 1 },
+      { type: "listening", listenText: "The team practices its strategy for four hours every day.", question: "How long does the team practice every day?", options: ["One hour", "Two hours", "Four hours", "All day"], answerIndex: 2 },
+      { type: "listening", listenText: "My brother received a scholarship because he is a talented gamer.", question: "Why did the brother receive a scholarship?", options: ["He is a talented gamer", "He is a fast runner", "He has good grades in math", "He won a singing contest"], answerIndex: 0 },
+      { type: "listening", listenText: "Doctors say too much screen time can hurt your eyesight.", question: "What can too much screen time hurt?", options: ["Your hearing", "Your eyesight", "Your hair", "Your teeth"], answerIndex: 1 }
+    ]
   }
 ];
