@@ -480,6 +480,101 @@ const ARTICLES = [
     ]
   },
   {
+    id: "tech-elem-2",
+    title: "Smart Homes: Houses That Listen",
+    level: "elementary",
+    topic: "tech",
+    estMinutes: 3,
+    addedDate: "2026-09-13",
+    body: [
+      "Imagine a house that can turn on the lights when you say a word. Today, many homes have smart devices that can listen and help people. These devices are called smart speakers, and they can play music, answer questions, and control other machines in the house.",
+      "Smart homes also have smart lights and smart locks. You can turn off the lights from your phone, even if you are not at home. Some smart locks let you open the door without a key. These inventions make daily life easier and safer for families.",
+      "Scientists keep inventing new smart devices every year. In the future, houses might be able to clean themselves or order food automatically. Technology is changing the way we live, one smart device at a time."
+    ],
+    vocabulary: [
+      { word: "imagine", pos: "v.", zh: "想像", example: "Can you imagine a talking house?", exampleZh: "你能想像一間會說話的房子嗎？" },
+      { word: "device", pos: "n.", zh: "裝置;設備", example: "This device can play music.", exampleZh: "這個裝置可以播放音樂。" },
+      { word: "smart", pos: "adj.", zh: "聰明的;智慧型的", example: "We have a smart speaker at home.", exampleZh: "我們家有一個智慧音箱。" },
+      { word: "control", pos: "v.", zh: "控制", example: "You can control the lights with your phone.", exampleZh: "你可以用手機控制燈光。" },
+      { word: "invention", pos: "n.", zh: "發明", example: "The smart lock is a useful invention.", exampleZh: "智慧門鎖是一項實用的發明。" },
+      { word: "safe", pos: "adj.", zh: "安全的", example: "Smart locks make our home safer.", exampleZh: "智慧門鎖讓我們的家更安全。" },
+      { word: "automatically", pos: "adv.", zh: "自動地", example: "The lights turn on automatically at night.", exampleZh: "燈光在晚上會自動打開。" },
+      { word: "technology", pos: "n.", zh: "科技", example: "Technology is changing our lives.", exampleZh: "科技正在改變我們的生活。" },
+      { word: "machine", pos: "n.", zh: "機器", example: "This machine can clean the floor.", exampleZh: "這台機器可以清理地板。" },
+      { word: "future", pos: "n.", zh: "未來", example: "In the future, houses may clean themselves.", exampleZh: "在未來,房子也許能自己清潔。" }
+    ],
+    extraVocabulary: [
+      { word: "house", pos: "n.", zh: "房子", example: "This is a smart house.", exampleZh: "這是一間智慧型房子。" },
+      { word: "listen", pos: "v.", zh: "聆聽", example: "The speaker can listen to your voice.", exampleZh: "這個喇叭可以聽你說話。" },
+      { word: "answer", pos: "v./n.", zh: "回答", example: "It can answer simple questions.", exampleZh: "它可以回答簡單的問題。" },
+      { word: "question", pos: "n.", zh: "問題", example: "I asked it a question.", exampleZh: "我問了它一個問題。" },
+      { word: "easy", pos: "adj.", zh: "容易的", example: "Smart devices make life easy.", exampleZh: "智慧裝置讓生活變容易。" },
+      { word: "daily", pos: "adj.", zh: "每天的", example: "It helps with daily tasks.", exampleZh: "它能幫忙處理每天的事務。" }
+    ],
+    quiz: [
+      { type: "reading", question: "What can a smart speaker do, according to the article?", options: ["Cook dinner", "Play music and answer questions", "Drive a car", "Grow plants"], answerIndex: 1 },
+      { type: "reading", question: "How can you turn off smart lights, based on the article?", options: ["By clapping only", "From your phone", "By breaking them", "You cannot turn them off"], answerIndex: 1 },
+      { type: "reading", question: "What might future houses be able to do, according to the article?", options: ["Clean themselves or order food", "Fly in the sky", "Talk like humans", "Grow bigger"], answerIndex: 0 },
+      { type: "reading", question: "What do smart locks let you do, according to the article?", options: ["Open the door without a key", "Lock the windows automatically", "Turn on the TV", "Cook food"], answerIndex: 0 },
+      { type: "vocab", question: "\"Invention\" means:", options: ["發明", "未來", "安全的", "控制"], answerIndex: 0 },
+      { type: "vocab", question: "Choose the meaning of \"device\".", options: ["裝置", "發明", "未來", "聰明的"], answerIndex: 0 },
+      { type: "vocab", question: "\"Automatically\" means:", options: ["自動地", "安全的", "容易的", "聰明的"], answerIndex: 0 },
+      { type: "vocab", question: "Which word means 控制 (to control)?", options: ["control", "safe", "future", "technology"], answerIndex: 0 },
+      { type: "listening", listenText: "Please turn off the lights before you leave the room.", question: "What does the speaker ask you to do?", options: ["Turn off the lights", "Open the door", "Play music", "Clean the floor"], answerIndex: 0 },
+      { type: "listening", listenText: "This smart device can answer your questions.", question: "What can the device do?", options: ["Cook food", "Answer your questions", "Drive a car", "Fly"], answerIndex: 1 },
+      { type: "listening", listenText: "In the future, robots might help us clean our homes.", question: "What might robots do in the future?", options: ["Help us clean our homes", "Teach math class", "Play soccer", "Sing songs"], answerIndex: 0 },
+      { type: "listening", listenText: "The door will lock automatically at night.", question: "When will the door lock automatically?", options: ["In the morning", "At night", "At noon", "Never"], answerIndex: 1 }
+    ]
+  },
+  {
+    id: "sports-middle-2",
+    title: "Esports: A New Kind of Sport",
+    level: "middle",
+    topic: "sports",
+    estMinutes: 4,
+    addedDate: "2026-09-13",
+    body: [
+      "When people think of sports, they often picture running, swimming, or playing soccer. But today, a new kind of competition is becoming popular around the world: esports. Esports are competitive video game tournaments where players compete against each other for prizes and fame.",
+      "Just like traditional athletes, esports players practice for many hours every day. They train their reflexes, improve their strategy, and work together with teammates. Some professional players even have coaches and personal trainers to keep their minds and bodies healthy.",
+      "Esports tournaments can fill huge stadiums, and millions of fans watch the matches online. Some competitions offer prize money worth millions of dollars. This has turned esports into a serious career for many young people around the world.",
+      "Not everyone agrees that esports should be called a real sport. Some people argue that video games do not require enough physical exercise. Still, esports continues to grow in popularity, and more schools and colleges are starting esports clubs and teams."
+    ],
+    vocabulary: [
+      { word: "competitive", pos: "adj.", zh: "競爭的", example: "Esports is a very competitive activity.", exampleZh: "電子競技是一項競爭激烈的活動。" },
+      { word: "tournament", pos: "n.", zh: "錦標賽;比賽", example: "The tournament had teams from ten countries.", exampleZh: "這場錦標賽有來自十個國家的隊伍。" },
+      { word: "compete", pos: "v.", zh: "競爭;比賽", example: "Players compete for the championship.", exampleZh: "選手們競爭冠軍。" },
+      { word: "prize", pos: "n.", zh: "獎品;獎金", example: "The winning team received a big prize.", exampleZh: "獲勝隊伍得到了一大筆獎金。" },
+      { word: "reflexes", pos: "n.", zh: "反應能力", example: "Fast reflexes are important in esports.", exampleZh: "快速的反應能力在電競中很重要。" },
+      { word: "strategy", pos: "n.", zh: "策略", example: "A good strategy can help you win the game.", exampleZh: "好的策略能幫助你贏得比賽。" },
+      { word: "professional", pos: "adj./n.", zh: "職業的;專業人士", example: "She is a professional esports player.", exampleZh: "她是一位職業電競選手。" },
+      { word: "stadium", pos: "n.", zh: "體育場", example: "The stadium was full of fans.", exampleZh: "體育場裡擠滿了粉絲。" },
+      { word: "career", pos: "n.", zh: "職業;生涯", example: "He built a career as a gamer.", exampleZh: "他成為職業玩家,建立了自己的職涯。" },
+      { word: "physical", pos: "adj.", zh: "身體的", example: "Physical exercise keeps you healthy.", exampleZh: "身體運動能讓你保持健康。" }
+    ],
+    extraVocabulary: [
+      { word: "traditional", pos: "adj.", zh: "傳統的", example: "Soccer is a traditional sport.", exampleZh: "足球是一項傳統運動。" },
+      { word: "athlete", pos: "n.", zh: "運動員", example: "The athlete trains every day.", exampleZh: "這位運動員每天都在訓練。" },
+      { word: "teammate", pos: "n.", zh: "隊友", example: "She works well with her teammates.", exampleZh: "她跟隊友合作得很好。" },
+      { word: "coach", pos: "n.", zh: "教練", example: "The coach helps players improve.", exampleZh: "教練幫助選手進步。" },
+      { word: "popularity", pos: "n.", zh: "受歡迎程度", example: "Esports is growing in popularity.", exampleZh: "電子競技越來越受歡迎。" },
+      { word: "argue", pos: "v.", zh: "爭論;主張", example: "Some people argue it is not a real sport.", exampleZh: "有些人主張這不是真正的運動。" }
+    ],
+    quiz: [
+      { type: "reading", question: "What is esports, according to the article?", options: ["A type of traditional sport like soccer", "Competitive video game tournaments", "A cooking competition", "A music contest"], answerIndex: 1 },
+      { type: "reading", question: "How do esports players train, based on the article?", options: ["They never practice", "They train reflexes and strategy for hours every day", "They only watch TV", "They read books all day"], answerIndex: 1 },
+      { type: "reading", question: "What can esports tournaments offer, according to the article?", options: ["Free food only", "Prize money worth millions of dollars", "Nothing", "A small trophy only"], answerIndex: 1 },
+      { type: "reading", question: "Why do some people think esports should not be called a real sport?", options: ["Because it costs too much money", "Because video games do not require enough physical exercise", "Because there are no teams", "Because nobody watches it"], answerIndex: 1 },
+      { type: "vocab", question: "\"Tournament\" means:", options: ["錦標賽", "反應能力", "策略", "體育場"], answerIndex: 0 },
+      { type: "vocab", question: "Choose the meaning of \"reflexes\".", options: ["反應能力", "職業的", "傳統的", "教練"], answerIndex: 0 },
+      { type: "vocab", question: "\"Strategy\" means:", options: ["策略", "獎品", "隊友", "受歡迎程度"], answerIndex: 0 },
+      { type: "vocab", question: "Which word means 體育場 (a large place to watch games)?", options: ["stadium", "career", "prize", "athlete"], answerIndex: 0 },
+      { type: "listening", listenText: "The two teams will compete in the final match tomorrow.", question: "When will the two teams compete?", options: ["Tomorrow", "Yesterday", "Next year", "Never"], answerIndex: 0 },
+      { type: "listening", listenText: "She has fast reflexes, so she plays the game very well.", question: "Why does she play the game very well?", options: ["She has fast reflexes", "She is very tall", "She reads a lot", "She sings well"], answerIndex: 0 },
+      { type: "listening", listenText: "The winning team received a huge prize of one million dollars.", question: "How much prize money did the winning team receive?", options: ["One thousand dollars", "One million dollars", "Ten dollars", "Nothing"], answerIndex: 1 },
+      { type: "listening", listenText: "More schools are starting esports clubs for students.", question: "What are more schools starting?", options: ["Cooking clubs", "Esports clubs", "Music clubs", "Art clubs"], answerIndex: 1 }
+    ]
+  },
+  {
     id: "music-elem-2",
     title: "Making Music with Everyday Objects",
     level: "elementary",
@@ -577,7 +672,7 @@ const ARTICLES = [
     ]
   },
   {
-    id: "tech-elem-2",
+    id: "tech-elem-3",
     title: "Exploring Mars with Rovers",
     level: "elementary",
     topic: "tech",
@@ -625,7 +720,7 @@ const ARTICLES = [
     ]
   },
   {
-    id: "sports-middle-2",
+    id: "sports-middle-3",
     title: "The Rise of Esports",
     level: "middle",
     topic: "sports",
