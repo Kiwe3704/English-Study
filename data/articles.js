@@ -159,7 +159,7 @@ const ARTICLES = [
     vocabulary: [
       { word: "rainforest", pos: "n.", zh: "雨林", example: "The Amazon rainforest is very large.", exampleZh: "亞馬遜雨林非常廣大。" },
       { word: "humid", pos: "adj.", zh: "潮濕悶熱的", example: "The weather here is hot and humid.", exampleZh: "這裡的天氣又熱又潮濕。" },
-      { word: "leaf", pos: "n.", zh: "葉子", example: "A big green leaf fell on the ground.", exampleZh: "一片大大的綠葉掉在地上。" },
+      { word: "leaf", forms: ["leaves"], pos: "n.", zh: "葉子", example: "A big green leaf fell on the ground.", exampleZh: "一片大大的綠葉掉在地上。" },
       { word: "explore", pos: "v.", zh: "探索", example: "We love to explore new places.", exampleZh: "我們喜歡探索新的地方。" },
       { word: "monkey", pos: "n.", zh: "猴子", example: "A monkey jumped from tree to tree.", exampleZh: "一隻猴子從一棵樹跳到另一棵樹。" },
       { word: "colorful", pos: "adj.", zh: "色彩繽紛的", example: "The bird has colorful feathers.", exampleZh: "這隻鳥有色彩繽紛的羽毛。" },

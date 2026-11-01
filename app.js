@@ -189,6 +189,8 @@ function renderArticleBody(article) {
     const w = v.word.toLowerCase();
     stemToWord[w] = w;
     if (/[^aeiou]y$/.test(w)) stemToWord[w.slice(0, -1) + "i"] = w;
+    // 不規則變化(例如 leaf → leaves)由資料裡的 forms 欄位個別指定
+    (v.forms || []).forEach(f => { stemToWord[f.toLowerCase()] = w; });
   });
   const escaped = Object.keys(stemToWord).map(w => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
   // 字尾:複數/動詞變化(s, es, d, ed, ing)+ 比較級/最高級(r, er, st, est)
