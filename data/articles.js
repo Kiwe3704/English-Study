@@ -767,5 +767,200 @@ const ARTICLES = [
       { type: "listening", listenText: "My brother received a scholarship because he is a talented gamer.", question: "Why did the brother receive a scholarship?", options: ["He is a talented gamer", "He is a fast runner", "He has good grades in math", "He won a singing contest"], answerIndex: 0 },
       { type: "listening", listenText: "Doctors say too much screen time can hurt your eyesight.", question: "What can too much screen time hurt?", options: ["Your hearing", "Your eyesight", "Your hair", "Your teeth"], answerIndex: 1 }
     ]
+  },
+  {
+    id: "music-middle-2",
+    title: "How Music Affects Your Brain",
+    level: "middle",
+    topic: "music",
+    estMinutes: 4,
+    addedDate: "2026-11-01",
+    body: [
+      "Have you ever noticed that a happy song can instantly improve your mood? Scientists have discovered that music has a powerful effect on the human brain. When we listen to a song we love, the brain releases a chemical called dopamine, which makes us feel pleasure.",
+      "Music can also help us concentrate. Some students find that calm music without lyrics helps them focus while they study. However, songs with words may distract people who are reading, because the brain tries to process two kinds of language at the same time.",
+      "Learning to play an instrument is like a workout for the brain. Research shows that musicians often have strong memory skills, because playing music requires them to read notes, move their fingers, and listen carefully all at once.",
+      "Doctors even use music therapy to help patients recover from illness or reduce stress. So the next time you put on your headphones, remember that you are doing more than just having fun."
+    ],
+    vocabulary: [
+      { word: "mood", pos: "n.", zh: "心情", example: "Sunny weather puts me in a good mood.", exampleZh: "晴朗的天氣讓我心情很好。" },
+      { word: "effect", pos: "n.", zh: "影響;效果", example: "Exercise has a good effect on your health.", exampleZh: "運動對健康有好的影響。" },
+      { word: "release", pos: "v.", zh: "釋放", example: "The brain releases chemicals when we are happy.", exampleZh: "當我們開心時,大腦會釋放化學物質。" },
+      { word: "pleasure", pos: "n.", zh: "愉快;樂趣", example: "Reading gives me great pleasure.", exampleZh: "閱讀帶給我很大的樂趣。" },
+      { word: "concentrate", pos: "v.", zh: "專心", example: "I can't concentrate when it is noisy.", exampleZh: "太吵的時候我無法專心。" },
+      { word: "lyric", pos: "n.", zh: "歌詞(常用複數 lyrics)", example: "I know all the lyrics to this song.", exampleZh: "我知道這首歌所有的歌詞。" },
+      { word: "distract", pos: "v.", zh: "使分心", example: "Please don't distract me while I study.", exampleZh: "我讀書時請不要讓我分心。" },
+      { word: "memory", pos: "n.", zh: "記憶;記憶力", example: "She has a very good memory.", exampleZh: "她的記憶力很好。" },
+      { word: "therapy", pos: "n.", zh: "治療;療法", example: "Music therapy can help people relax.", exampleZh: "音樂治療能幫助人們放鬆。" },
+      { word: "stress", pos: "n.", zh: "壓力", example: "Too much homework causes stress.", exampleZh: "太多作業會造成壓力。" }
+    ],
+    extraVocabulary: [
+      { word: "instantly", pos: "adv.", zh: "立刻", example: "The song instantly made me smile.", exampleZh: "這首歌立刻讓我笑了。" },
+      { word: "brain", pos: "n.", zh: "大腦", example: "The brain controls the whole body.", exampleZh: "大腦控制整個身體。" },
+      { word: "process", pos: "v.", zh: "處理", example: "The brain processes sounds very quickly.", exampleZh: "大腦處理聲音的速度非常快。" },
+      { word: "research", pos: "n.", zh: "研究", example: "New research shows that sleep is important.", exampleZh: "新的研究顯示睡眠很重要。" },
+      { word: "patient", pos: "n.", zh: "病人", example: "The doctor is talking to a patient.", exampleZh: "醫生正在和一位病人說話。" },
+      { word: "recover", pos: "v.", zh: "康復;恢復", example: "She recovered quickly after the flu.", exampleZh: "她得流感後很快就康復了。" },
+      { word: "headphone", pos: "n.", zh: "耳機(常用複數 headphones)", example: "I listen to music with headphones.", exampleZh: "我用耳機聽音樂。" }
+    ],
+    quiz: [
+      { type: "reading", question: "What chemical does the brain release when we listen to a song we love?", options: ["Water", "Dopamine", "Salt", "Sugar"], answerIndex: 1 },
+      { type: "reading", question: "Why might songs with words distract people who are reading?", options: ["They are too loud", "The brain tries to process two kinds of language at once", "They are too short", "People do not like them"], answerIndex: 1 },
+      { type: "reading", question: "Why do musicians often have strong memory skills, according to the article?", options: ["They sleep more", "They eat healthy food", "Playing music requires reading notes, moving fingers, and listening at once", "They never use phones"], answerIndex: 2 },
+      { type: "reading", question: "What do doctors use music therapy for?", options: ["To help patients recover or reduce stress", "To make hospitals louder", "To teach math", "To sell headphones"], answerIndex: 0 },
+      { type: "vocab", question: "\"Concentrate\" means:", options: ["壓力", "專心", "記憶", "治療"], answerIndex: 1 },
+      { type: "vocab", question: "Choose the meaning of \"distract\".", options: ["使分心", "釋放", "影響", "立刻"], answerIndex: 0 },
+      { type: "vocab", question: "\"Therapy\" means:", options: ["心情", "樂趣", "治療;療法", "歌詞"], answerIndex: 2 },
+      { type: "vocab", question: "Which word means 壓力?", options: ["mood", "effect", "memory", "stress"], answerIndex: 3 },
+      { type: "listening", listenText: "Listening to calm music helps me concentrate on my homework.", question: "What helps the speaker concentrate?", options: ["Watching TV", "Calm music", "Loud songs", "Playing games"], answerIndex: 1 },
+      { type: "listening", listenText: "Too much stress can make it hard to sleep at night.", question: "What can too much stress do?", options: ["Make it hard to sleep", "Make you taller", "Improve your memory", "Make you hungry"], answerIndex: 0 },
+      { type: "listening", listenText: "My grandmother uses music therapy to help her memory.", question: "Why does the grandmother use music therapy?", options: ["To learn a new language", "To help her memory", "To sing on TV", "To lose weight"], answerIndex: 1 },
+      { type: "listening", listenText: "Happy songs can put you in a good mood instantly.", question: "What can happy songs do?", options: ["Make you tired", "Make you angry", "Put you in a good mood", "Make you hungry"], answerIndex: 2 }
+    ]
+  },
+  {
+    id: "sports-elem-2",
+    title: "Baseball in Taiwan",
+    level: "elementary",
+    topic: "sports",
+    estMinutes: 3,
+    addedDate: "2026-11-01",
+    body: [
+      "Baseball is one of the most popular sports in Taiwan. Many children start playing it in elementary school, and families love to watch games together on TV or at the stadium.",
+      "In a baseball game, two teams take turns to bat and to field. The pitcher throws the ball, and the batter tries to hit it. If the batter hits the ball far, he can run around all the bases and score a home run!",
+      "In 2024, Taiwan's national team won the Premier12, a big international tournament. People all over Taiwan celebrated in the streets, and the players became heroes.",
+      "Baseball teaches players to work as a team and never give up. Even if you are not a player, cheering loudly for your team with your friends can be a lot of fun!"
+    ],
+    vocabulary: [
+      { word: "stadium", pos: "n.", zh: "體育場;球場", example: "The stadium was full of fans.", exampleZh: "球場裡擠滿了球迷。" },
+      { word: "pitcher", pos: "n.", zh: "投手", example: "The pitcher throws the ball very fast.", exampleZh: "投手把球投得非常快。" },
+      { word: "batter", pos: "n.", zh: "打者", example: "The batter hit the ball over the fence.", exampleZh: "打者把球打出了全壘打牆。" },
+      { word: "base", pos: "n.", zh: "壘(棒球)", example: "He ran to first base.", exampleZh: "他跑上了一壘。" },
+      { word: "score", pos: "v.", zh: "得分", example: "Our team scored three points.", exampleZh: "我們隊得了三分。" },
+      { word: "national", pos: "adj.", zh: "國家的", example: "She plays for the national team.", exampleZh: "她是國家隊的球員。" },
+      { word: "international", pos: "adj.", zh: "國際的", example: "It is an international competition.", exampleZh: "這是一場國際比賽。" },
+      { word: "tournament", pos: "n.", zh: "錦標賽", example: "Our school joined a baseball tournament.", exampleZh: "我們學校參加了一場棒球錦標賽。" },
+      { word: "celebrate", pos: "v.", zh: "慶祝", example: "We celebrated the big win.", exampleZh: "我們慶祝這場大勝利。" },
+      { word: "hero", pos: "n.", zh: "英雄", example: "The players became heroes.", exampleZh: "球員們成了英雄。" }
+    ],
+    extraVocabulary: [
+      { word: "family", pos: "n.", zh: "家庭;家人", example: "My family watches baseball together.", exampleZh: "我的家人一起看棒球。" },
+      { word: "turn", pos: "n.", zh: "輪流;順序", example: "It is your turn to bat.", exampleZh: "輪到你打擊了。" },
+      { word: "throw", pos: "v.", zh: "丟;投", example: "Throw the ball to me!", exampleZh: "把球丟給我!" },
+      { word: "street", pos: "n.", zh: "街道", example: "People danced in the street.", exampleZh: "人們在街上跳舞。" },
+      { word: "loudly", pos: "adv.", zh: "大聲地", example: "The fans cheered loudly.", exampleZh: "球迷們大聲歡呼。" },
+      { word: "together", pos: "adv.", zh: "一起", example: "Let's play together.", exampleZh: "我們一起玩吧。" }
+    ],
+    quiz: [
+      { type: "reading", question: "Where do families love to watch baseball games, according to the article?", options: ["At the library", "On TV or at the stadium", "At the beach", "In the classroom"], answerIndex: 1 },
+      { type: "reading", question: "What does the pitcher do?", options: ["Throws the ball", "Hits the ball", "Cheers for the team", "Sells tickets"], answerIndex: 0 },
+      { type: "reading", question: "What happens when a batter hits the ball far and runs around all the bases?", options: ["The game ends", "He scores a home run", "He gets a red card", "He must leave the field"], answerIndex: 1 },
+      { type: "reading", question: "What did Taiwan's national team win in 2024?", options: ["An Olympic gold medal", "The World Cup", "The Premier12", "A swimming race"], answerIndex: 2 },
+      { type: "vocab", question: "\"Pitcher\" means:", options: ["打者", "投手", "教練", "球迷"], answerIndex: 1 },
+      { type: "vocab", question: "Choose the meaning of \"celebrate\".", options: ["慶祝", "得分", "英雄", "國際的"], answerIndex: 0 },
+      { type: "vocab", question: "\"Tournament\" means:", options: ["體育場", "壘", "錦標賽", "國家的"], answerIndex: 2 },
+      { type: "vocab", question: "Which word means 英雄?", options: ["batter", "score", "base", "hero"], answerIndex: 3 },
+      { type: "listening", listenText: "The batter hit the ball and ran to second base.", question: "Where did the batter run?", options: ["To first base", "To second base", "To home", "To the stadium gate"], answerIndex: 1 },
+      { type: "listening", listenText: "Our team scored five runs in the last game.", question: "How many runs did the team score?", options: ["Two", "Three", "Five", "Ten"], answerIndex: 2 },
+      { type: "listening", listenText: "Thousands of fans celebrated in the streets after the game.", question: "What did the fans do after the game?", options: ["Celebrated in the streets", "Went to sleep", "Cried at home", "Played soccer"], answerIndex: 0 },
+      { type: "listening", listenText: "The pitcher can throw the ball very fast.", question: "What can the pitcher do?", options: ["Run very fast", "Throw the ball very fast", "Sing very well", "Swim very far"], answerIndex: 1 }
+    ]
+  },
+  {
+    id: "nature-elem-3",
+    title: "The Journey of a Sea Turtle",
+    level: "elementary",
+    topic: "nature",
+    estMinutes: 3,
+    addedDate: "2026-11-01",
+    body: [
+      "Sea turtles have lived in the ocean for millions of years. They swim long distances across the sea, but they always return to the beach to lay their eggs.",
+      "A mother turtle digs a hole in the sand at night and lays about one hundred eggs. After about two months, the baby turtles hatch and crawl quickly to the water. It is a dangerous journey, because birds and crabs may try to catch them.",
+      "In Taiwan, you can often see green sea turtles near Xiaoliuqiu island. They like to eat seaweed and swim slowly near the rocks. Visitors should never touch them or get too close.",
+      "Sadly, plastic bags in the ocean look like jellyfish, which is a favorite food of some turtles. When turtles eat plastic, they can get very sick. Keeping our beaches clean is one easy way to protect these gentle animals."
+    ],
+    vocabulary: [
+      { word: "turtle", pos: "n.", zh: "海龜;烏龜", example: "The turtle is swimming in the sea.", exampleZh: "海龜正在海裡游泳。" },
+      { word: "distance", pos: "n.", zh: "距離", example: "Birds can fly long distances.", exampleZh: "鳥類可以飛很遠的距離。" },
+      { word: "beach", pos: "n.", zh: "海灘", example: "We played on the beach all day.", exampleZh: "我們整天在海灘上玩。" },
+      { word: "egg", pos: "n.", zh: "蛋", example: "The bird laid three eggs.", exampleZh: "這隻鳥下了三顆蛋。" },
+      { word: "dig", pos: "v.", zh: "挖", example: "The dog likes to dig in the garden.", exampleZh: "這隻狗喜歡在花園裡挖洞。" },
+      { word: "hatch", pos: "v.", zh: "孵化", example: "The baby chicks will hatch soon.", exampleZh: "小雞很快就要孵出來了。" },
+      { word: "crawl", pos: "v.", zh: "爬行", example: "The baby can crawl now.", exampleZh: "小寶寶現在會爬了。" },
+      { word: "dangerous", pos: "adj.", zh: "危險的", example: "It is dangerous to swim alone.", exampleZh: "獨自游泳很危險。" },
+      { word: "journey", pos: "n.", zh: "旅程", example: "The turtle went on a long journey.", exampleZh: "海龜展開了一段漫長的旅程。" },
+      { word: "gentle", pos: "adj.", zh: "溫和的", example: "Sea turtles are gentle animals.", exampleZh: "海龜是溫和的動物。" }
+    ],
+    extraVocabulary: [
+      { word: "return", pos: "v.", zh: "返回", example: "The turtles return to the same beach.", exampleZh: "海龜會回到同一個海灘。" },
+      { word: "sand", pos: "n.", zh: "沙", example: "The sand is warm in the sun.", exampleZh: "沙子在陽光下很溫暖。" },
+      { word: "island", pos: "n.", zh: "島嶼", example: "Taiwan is an island.", exampleZh: "台灣是一座島嶼。" },
+      { word: "seaweed", pos: "n.", zh: "海草;海藻", example: "Some turtles eat seaweed.", exampleZh: "有些海龜吃海草。" },
+      { word: "visitor", pos: "n.", zh: "遊客", example: "Many visitors come to the island.", exampleZh: "很多遊客來到這座島。" },
+      { word: "jellyfish", pos: "n.", zh: "水母", example: "A jellyfish is floating in the water.", exampleZh: "一隻水母在水中漂浮。" },
+      { word: "sick", pos: "adj.", zh: "生病的", example: "I stayed home because I was sick.", exampleZh: "我生病了所以待在家。" }
+    ],
+    quiz: [
+      { type: "reading", question: "Why do sea turtles return to the beach?", options: ["To find food", "To lay their eggs", "To sleep", "To meet visitors"], answerIndex: 1 },
+      { type: "reading", question: "How many eggs does a mother turtle lay, according to the article?", options: ["About ten", "About fifty", "About one hundred", "About one thousand"], answerIndex: 2 },
+      { type: "reading", question: "Why is the baby turtles' journey to the water dangerous?", options: ["The water is too cold", "Birds and crabs may try to catch them", "The sand is too hot", "They cannot swim"], answerIndex: 1 },
+      { type: "reading", question: "Why is plastic in the ocean a problem for turtles?", options: ["It looks like jellyfish, and turtles can get sick if they eat it", "It makes the water too warm", "It scares visitors", "It makes the beach too bright"], answerIndex: 0 },
+      { type: "vocab", question: "\"Hatch\" means:", options: ["爬行", "孵化", "挖", "返回"], answerIndex: 1 },
+      { type: "vocab", question: "Choose the meaning of \"journey\".", options: ["距離", "海灘", "旅程", "遊客"], answerIndex: 2 },
+      { type: "vocab", question: "\"Gentle\" means:", options: ["溫和的", "危險的", "生病的", "色彩繽紛的"], answerIndex: 0 },
+      { type: "vocab", question: "Which word means 爬行?", options: ["dig", "hatch", "egg", "crawl"], answerIndex: 3 },
+      { type: "listening", listenText: "The baby turtles crawled to the sea under the moonlight.", question: "When did the baby turtles crawl to the sea?", options: ["In the morning", "At noon", "Under the moonlight", "In the afternoon"], answerIndex: 2 },
+      { type: "listening", listenText: "Please do not touch the turtles when you go snorkeling.", question: "What should you not do?", options: ["Swim in the sea", "Touch the turtles", "Take photos", "Wear a life jacket"], answerIndex: 1 },
+      { type: "listening", listenText: "A mother turtle can lay about one hundred eggs at a time.", question: "How many eggs can a mother turtle lay at a time?", options: ["About one hundred", "About ten", "About five", "About one thousand"], answerIndex: 0 },
+      { type: "listening", listenText: "We picked up plastic bags on the beach to help the turtles.", question: "What did the speaker pick up on the beach?", options: ["Shells", "Sand", "Plastic bags", "Eggs"], answerIndex: 2 }
+    ]
+  },
+  {
+    id: "nature-middle-3",
+    title: "Living Next to Volcanoes",
+    level: "middle",
+    topic: "nature",
+    estMinutes: 4,
+    addedDate: "2026-11-01",
+    body: [
+      "A volcano is an opening in the Earth's surface where hot melted rock, called magma, can escape. When magma reaches the surface, it is called lava. Some volcanoes erupt with huge explosions, while others release lava slowly and quietly.",
+      "Volcanoes are found along the edges of the giant plates that make up the Earth's crust. Many of them lie along the Pacific Ring of Fire, a region that circles the Pacific Ocean. Japan, Indonesia, and the Philippines all have active volcanoes.",
+      "Taiwan sits on the Ring of Fire too. Yangmingshan National Park in Taipei is built on a group of volcanoes. Although they have not erupted for thousands of years, scientists still monitor them carefully, and visitors can see steam rising from the ground and smell sulfur in the air.",
+      "Living near a volcano has advantages as well as risks. Volcanic soil is very fertile, which makes it excellent for farming, and the heat underground can be used to produce clean energy. Still, communities must be prepared to evacuate quickly if an eruption begins."
+    ],
+    vocabulary: [
+      { word: "volcano", pos: "n.", zh: "火山", example: "The volcano erupted last year.", exampleZh: "這座火山去年噴發了。" },
+      { word: "magma", pos: "n.", zh: "岩漿(在地底下)", example: "Magma is very hot melted rock.", exampleZh: "岩漿是非常熱的熔化岩石。" },
+      { word: "lava", pos: "n.", zh: "熔岩(流到地表)", example: "Lava flowed down the mountain.", exampleZh: "熔岩沿著山坡流下。" },
+      { word: "erupt", pos: "v.", zh: "(火山)爆發", example: "Some volcanoes erupt every few years.", exampleZh: "有些火山每隔幾年就會爆發。" },
+      { word: "explosion", pos: "n.", zh: "爆炸", example: "We heard a loud explosion.", exampleZh: "我們聽到一聲巨大的爆炸聲。" },
+      { word: "crust", pos: "n.", zh: "地殼", example: "The Earth's crust is made of rock.", exampleZh: "地殼是由岩石組成的。" },
+      { word: "region", pos: "n.", zh: "地區;區域", example: "This region has many hot springs.", exampleZh: "這個地區有很多溫泉。" },
+      { word: "active", pos: "adj.", zh: "活躍的;活動中的", example: "It is an active volcano.", exampleZh: "這是一座活火山。" },
+      { word: "fertile", pos: "adj.", zh: "肥沃的", example: "Farmers love fertile soil.", exampleZh: "農夫們喜歡肥沃的土壤。" },
+      { word: "evacuate", pos: "v.", zh: "撤離;疏散", example: "People had to evacuate their homes.", exampleZh: "人們必須從家中撤離。" }
+    ],
+    extraVocabulary: [
+      { word: "surface", pos: "n.", zh: "表面", example: "The surface of the lake is calm.", exampleZh: "湖面很平靜。" },
+      { word: "melt", pos: "v.", zh: "融化;熔化", example: "Ice melts in the sun.", exampleZh: "冰在陽光下會融化。" },
+      { word: "edge", pos: "n.", zh: "邊緣", example: "Don't stand too close to the edge.", exampleZh: "不要站得太靠近邊緣。" },
+      { word: "steam", pos: "n.", zh: "蒸氣", example: "Steam is rising from the hot water.", exampleZh: "熱水正冒出蒸氣。" },
+      { word: "sulfur", pos: "n.", zh: "硫磺", example: "Sulfur smells like rotten eggs.", exampleZh: "硫磺聞起來像臭雞蛋。" },
+      { word: "advantage", pos: "n.", zh: "優點;好處", example: "Living near the sea has many advantages.", exampleZh: "住在海邊有很多好處。" },
+      { word: "community", pos: "n.", zh: "社區;居民", example: "The whole community helped clean the park.", exampleZh: "整個社區一起幫忙清理公園。" }
+    ],
+    quiz: [
+      { type: "reading", question: "What is magma called when it reaches the Earth's surface?", options: ["Steam", "Lava", "Sulfur", "Crust"], answerIndex: 1 },
+      { type: "reading", question: "Where are many volcanoes found, according to the article?", options: ["In the middle of deserts", "Along the Pacific Ring of Fire", "Only in Europe", "Under the North Pole"], answerIndex: 1 },
+      { type: "reading", question: "What can visitors experience at Yangmingshan National Park?", options: ["Fresh snow all year", "Lava flowing every day", "Steam rising from the ground and the smell of sulfur", "Giant explosions every week"], answerIndex: 2 },
+      { type: "reading", question: "What is one advantage of living near a volcano?", options: ["The soil is very fertile", "It is always quiet", "There are no risks", "The weather is always cold"], answerIndex: 0 },
+      { type: "vocab", question: "\"Erupt\" means:", options: ["撤離", "(火山)爆發", "融化", "地殼"], answerIndex: 1 },
+      { type: "vocab", question: "Choose the meaning of \"fertile\".", options: ["肥沃的", "活躍的", "危險的", "國際的"], answerIndex: 0 },
+      { type: "vocab", question: "\"Evacuate\" means:", options: ["爆炸", "地區", "撤離;疏散", "表面"], answerIndex: 2 },
+      { type: "vocab", question: "Which word means 地殼?", options: ["lava", "magma", "region", "crust"], answerIndex: 3 },
+      { type: "listening", listenText: "The volcano has not erupted for thousands of years.", question: "How long has it been since the volcano erupted?", options: ["One week", "Ten years", "Thousands of years", "Since yesterday"], answerIndex: 2 },
+      { type: "listening", listenText: "Scientists monitor the volcano every day for any changes.", question: "How often do scientists monitor the volcano?", options: ["Every day", "Once a year", "Every month", "Never"], answerIndex: 0 },
+      { type: "listening", listenText: "The people in the village had to evacuate after the explosion.", question: "What did the people have to do after the explosion?", options: ["Go to school", "Evacuate", "Build new homes", "Climb the volcano"], answerIndex: 1 },
+      { type: "listening", listenText: "Volcanic soil is fertile, so farmers grow many vegetables here.", question: "Why do farmers grow many vegetables here?", options: ["The soil is fertile", "The weather is cold", "There is no rain", "The land is flat"], answerIndex: 0 }
+    ]
   }
 ];
