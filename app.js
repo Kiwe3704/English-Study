@@ -65,15 +65,85 @@ function updateRecord(articleId, quizType, score, total) {
 }
 
 // ---------- 語音(Web Speech API) ----------
+// 瀏覽器預設語音常是較機械的舊式語音(例如 Windows 的 Microsoft David/Zira)。
+// 這裡會從可用的英文語音中挑出最自然的一個(Edge 的 Natural/神經網路語音最佳),
+// 使用者也可以在朗讀列的下拉選單自行切換,選擇會記在瀏覽器裡。
+let englishVoices = [];
+let selectedVoice = null;
+
+function voiceScore(v) {
+  const name = v.name.toLowerCase();
+  let score = 0;
+  if (/natural|neural/.test(name)) score += 100;             // Edge 線上神經網路語音
+  else if (/google/.test(name)) score += 60;                 // Chrome 的 Google 語音
+  else if (/premium|enhanced|siri/.test(name)) score += 55;  // macOS/iOS 高品質語音
+  else if (/samantha|ava|allison|susan|karen|daniel|serena/.test(name)) score += 40;
+  if (/online/.test(name)) score += 10;
+  if (/david|zira|mark|hazel/.test(name)) score -= 20;       // Windows 舊式語音,聲音較機械
+  if (v.lang.toLowerCase().replace("_", "-") === "en-us") score += 5;
+  return score;
+}
+
+function loadVoices() {
+  if (!("speechSynthesis" in window)) return;
+  englishVoices = window.speechSynthesis.getVoices()
+    .filter(v => /^en[-_]/i.test(v.lang))
+    .sort((a, b) => voiceScore(b) - voiceScore(a));
+  let saved = null;
+  try { saved = localStorage.getItem("preferredVoice"); } catch (e) {}
+  selectedVoice = englishVoices.find(v => v.voiceURI === saved) || englishVoices[0] || null;
+  renderVoicePicker();
+}
+
+function voiceLabel(v) {
+  const short = v.name.replace(/^Microsoft\s+/, "").replace(/\s*Online\s*\(Natural\)/i, "").replace(/\s+-\s+English.*$/i, "");
+  const tag = voiceScore(v) >= 100 ? "⭐ 自然人聲" : voiceScore(v) >= 55 ? "推薦" : "";
+  return `${short}(${v.lang})${tag ? " " + tag : ""}`;
+}
+
+function renderVoicePicker() {
+  const select = document.getElementById("voice-select");
+  if (!select) return;
+  if (englishVoices.length === 0) {
+    select.innerHTML = '<option>預設語音</option>';
+    select.disabled = true;
+  } else {
+    select.disabled = false;
+    select.innerHTML = englishVoices
+      .map(v => `<option value="${escapeHtml(v.voiceURI)}" ${v === selectedVoice ? "selected" : ""}>${escapeHtml(voiceLabel(v))}</option>`)
+      .join("");
+  }
+  const hint = document.getElementById("voice-hint");
+  if (hint) {
+    const hasNatural = englishVoices.some(v => voiceScore(v) >= 100);
+    hint.hidden = hasNatural;
+  }
+}
+
+function makeUtterance(text, rate) {
+  const utter = new SpeechSynthesisUtterance(text);
+  if (selectedVoice) {
+    utter.voice = selectedVoice;
+    utter.lang = selectedVoice.lang;
+  } else {
+    utter.lang = "en-US";
+  }
+  utter.rate = rate || 1;
+  return utter;
+}
+
+if ("speechSynthesis" in window) {
+  loadVoices();
+  window.speechSynthesis.addEventListener("voiceschanged", loadVoices);
+}
+
 function speakText(text, rate, onEnd) {
   if (!("speechSynthesis" in window)) {
     alert("你的瀏覽器不支援語音朗讀功能,建議使用 Chrome 或 Edge 瀏覽器。");
     return;
   }
   window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "en-US";
-  utter.rate = rate || 1;
+  const utter = makeUtterance(text, rate);
   if (onEnd) utter.onend = onEnd;
   window.speechSynthesis.speak(utter);
 }
@@ -216,9 +286,7 @@ function playFrom(index) {
       return;
     }
     readIndex = i;
-    const utter = new SpeechSynthesisUtterance(readQueue[i]);
-    utter.lang = "en-US";
-    utter.rate = currentSpeechRate;
+    const utter = makeUtterance(readQueue[i], currentSpeechRate);
     let done = false;
     const advance = () => {
       if (done) return;
@@ -227,7 +295,19 @@ function playFrom(index) {
       step(i + 1);
     };
     utter.onend = advance;
-    utter.onerror = advance;
+    utter.onerror = e => {
+      // 線上語音(例如 Edge 自然人聲)在斷網時會失敗:改用本機語音重唸同一句,而不是直接跳過
+      const realError = e && e.error && e.error !== "interrupted" && e.error !== "canceled";
+      const fallback = englishVoices.find(v => v.localService);
+      if (realError && selectedVoice && !selectedVoice.localService && fallback && !done) {
+        done = true;
+        selectedVoice = fallback;
+        renderVoicePicker();
+        if (mySession === readSession) step(i);
+        return;
+      }
+      advance();
+    };
     window.speechSynthesis.speak(utter);
   };
   step(index);
@@ -266,9 +346,7 @@ function interruptForWord(wordText) {
   readSession++; // 讓目前佇列裡待處理的 onend/onerror 失效,避免重複推進
   window.speechSynthesis.cancel();
 
-  const utter = new SpeechSynthesisUtterance(wordText);
-  utter.lang = "en-US";
-  utter.rate = currentSpeechRate;
+  const utter = makeUtterance(wordText, currentSpeechRate);
   let done = false;
   const finish = () => {
     if (done) return;
@@ -338,7 +416,9 @@ function renderArticleView(app, articleId) {
         <button id="pause-btn" class="secondary" disabled>⏸ 暫停</button>
         <button id="stop-btn" class="secondary" disabled>⏹ 停止</button>
         <label>語速 <input type="range" id="rate-range" min="0.6" max="1.4" step="0.1" value="1"></label>
+        <label>聲音 <select id="voice-select"></select></label>
       </div>
+      <p class="voice-hint" id="voice-hint" hidden>💡 目前的瀏覽器沒有自然人聲。用 Microsoft Edge 開啟本網站,可以聽到最像真人的發音。</p>
     </div>
     <div class="article-body" id="article-body">${renderArticleBody(article)}</div>
     <p class="vocab-hint">🟠 橘色底線的生字:點擊可聽發音、看翻譯、加入單字本 ・ 🟢 綠色虛線的單字:${isTouchDevice ? "點一下" : "滑鼠移上去停留一下"}會顯示簡易翻譯</p>
@@ -362,6 +442,13 @@ function renderArticleView(app, articleId) {
   ttsButtons = { playBtn, pauseBtn, stopBtn };
 
   rateRange.addEventListener("input", () => { currentSpeechRate = parseFloat(rateRange.value); });
+
+  renderVoicePicker();
+  document.getElementById("voice-select").addEventListener("change", e => {
+    selectedVoice = englishVoices.find(v => v.voiceURI === e.target.value) || selectedVoice;
+    try { localStorage.setItem("preferredVoice", selectedVoice.voiceURI); } catch (err) {}
+    interruptForWord("Hello! This is my voice."); // 試聽;若正在朗讀,試聽後會接續
+  });
 
   playBtn.addEventListener("click", () => {
     playFrom(0);

@@ -231,6 +231,22 @@ main#app {
 
 .tts-bar label { font-size: 0.85rem; color: var(--color-muted); display: flex; align-items: center; gap: 6px; }
 
+.tts-bar select {
+  max-width: 220px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 2px solid var(--color-border);
+  background: var(--color-card);
+  color: var(--color-text);
+  font-size: 0.85rem;
+}
+
+.voice-hint {
+  margin: 8px 2px 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
 .article-body {
   background: var(--color-card);
   border-radius: var(--radius);
