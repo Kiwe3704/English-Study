@@ -13,11 +13,27 @@ const LS_KEYS = { VOCAB: "myVocabList", RECORDS: "learningRecords", VIEWED: "vie
 const isTouchDevice = window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
 
 // ---------- localStorage 工具 ----------
+// 有些瀏覽器設定(例如 Edge 封鎖網站資料/Cookie)會讓 localStorage 一存取就丟出錯誤,
+// 導致整個頁面卡住。所有讀寫都經過這兩個函式:被封鎖時改存在記憶體裡,
+// 網站照常運作,只是關掉分頁後學習紀錄不會保留。
+const memoryStore = {};
+function storageGet(key) {
+  try {
+    const value = localStorage.getItem(key);
+    if (value !== null) return value;
+  } catch (e) {}
+  return Object.prototype.hasOwnProperty.call(memoryStore, key) ? memoryStore[key] : null;
+}
+function storageSet(key, value) {
+  memoryStore[key] = value;
+  try { localStorage.setItem(key, value); } catch (e) {}
+}
+
 function getVocabList() {
-  try { return JSON.parse(localStorage.getItem(LS_KEYS.VOCAB)) || []; }
+  try { return JSON.parse(storageGet(LS_KEYS.VOCAB)) || []; }
   catch (e) { return []; }
 }
-function saveVocabList(list) { localStorage.setItem(LS_KEYS.VOCAB, JSON.stringify(list)); }
+function saveVocabList(list) { storageSet(LS_KEYS.VOCAB, JSON.stringify(list)); }
 function addVocabWord(entry) {
   const list = getVocabList();
   if (!list.some(x => x.word === entry.word && x.articleId === entry.articleId)) {
@@ -31,14 +47,14 @@ function removeVocabWord(word, articleId) {
 
 // 有 addedDate 的文章是新增文章:在這個瀏覽器還沒打開過之前顯示 NEW 標籤
 function getViewedArticles() {
-  try { return JSON.parse(localStorage.getItem(LS_KEYS.VIEWED)) || []; }
+  try { return JSON.parse(storageGet(LS_KEYS.VIEWED)) || []; }
   catch (e) { return []; }
 }
 function markArticleViewed(articleId) {
   const viewed = getViewedArticles();
   if (!viewed.includes(articleId)) {
     viewed.push(articleId);
-    localStorage.setItem(LS_KEYS.VIEWED, JSON.stringify(viewed));
+    storageSet(LS_KEYS.VIEWED, JSON.stringify(viewed));
   }
 }
 function isNewArticle(article) {
@@ -46,10 +62,10 @@ function isNewArticle(article) {
 }
 
 function getRecords() {
-  try { return JSON.parse(localStorage.getItem(LS_KEYS.RECORDS)) || {}; }
+  try { return JSON.parse(storageGet(LS_KEYS.RECORDS)) || {}; }
   catch (e) { return {}; }
 }
-function saveRecords(records) { localStorage.setItem(LS_KEYS.RECORDS, JSON.stringify(records)); }
+function saveRecords(records) { storageSet(LS_KEYS.RECORDS, JSON.stringify(records)); }
 function updateRecord(articleId, quizType, score, total) {
   const records = getRecords();
   if (!records[articleId]) records[articleId] = {};
@@ -90,7 +106,7 @@ function loadVoices() {
     .filter(v => /^en[-_]/i.test(v.lang))
     .sort((a, b) => voiceScore(b) - voiceScore(a));
   let saved = null;
-  try { saved = localStorage.getItem("preferredVoice"); } catch (e) {}
+  saved = storageGet("preferredVoice");
   selectedVoice = englishVoices.find(v => v.voiceURI === saved) || englishVoices[0] || null;
   renderVoicePicker();
 }
@@ -166,14 +182,22 @@ function renderArticleBody(article) {
   const extraMap = {};
   (article.extraVocabulary || []).forEach(v => { extraMap[v.word.toLowerCase()] = v; });
 
-  const allWords = article.vocabulary.map(v => v.word).concat((article.extraVocabulary || []).map(v => v.word));
-  const escaped = allWords.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
-  const regex = new RegExp("\\b(" + escaped.join("|") + ")(s|es|d|ed|ing)?\\b", "gi");
+  // 每個字的「字根 → 原形」對照:除了原形本身,子音+y 結尾的字(easy、study)
+  // 也加上把 y 換成 i 的字根(easi、studi),才能比對到 easier、studied 這類變化。
+  const stemToWord = {};
+  article.vocabulary.concat(article.extraVocabulary || []).forEach(v => {
+    const w = v.word.toLowerCase();
+    stemToWord[w] = w;
+    if (/[^aeiou]y$/.test(w)) stemToWord[w.slice(0, -1) + "i"] = w;
+  });
+  const escaped = Object.keys(stemToWord).map(w => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  // 字尾:複數/動詞變化(s, es, d, ed, ing)+ 比較級/最高級(r, er, st, est)
+  const regex = new RegExp("\\b(" + escaped.join("|") + ")(s|es|d|ed|ing|r|er|st|est)?\\b", "gi");
 
   return article.body
     .map(paragraph => {
       const html = paragraph.replace(regex, (match, base) => {
-        const key = base.toLowerCase();
+        const key = stemToWord[base.toLowerCase()];
         if (coreMap[key]) {
           return `<span class="vocab-word" data-word="${key}">${match}</span>`;
         }
@@ -446,7 +470,7 @@ function renderArticleView(app, articleId) {
   renderVoicePicker();
   document.getElementById("voice-select").addEventListener("change", e => {
     selectedVoice = englishVoices.find(v => v.voiceURI === e.target.value) || selectedVoice;
-    try { localStorage.setItem("preferredVoice", selectedVoice.voiceURI); } catch (err) {}
+    storageSet("preferredVoice", selectedVoice.voiceURI);
     interruptForWord("Hello! This is my voice."); // 試聽;若正在朗讀,試聽後會接續
   });
 
